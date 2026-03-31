@@ -33,13 +33,43 @@ h1 {
 
 
 #page1 img {
-  width: 450px;
-  height: 500px;
+  width: 90%;
+  max-width: 320px;
+  height: auto;
   object-fit: cover;
   border-radius: 15px;
   margin-top: 20px;
 }
 
+#page1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#page1 h1 {
+  font-size: 32px;
+}
+
+#page1 h2 {
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+@media(max-width:600px){
+  #page1 img {
+    max-width: 260px;
+  }
+
+  #page1 h1 {
+    font-size: 26px;
+  }
+
+  #page1 h2 {
+    font-size: 16px;
+  }
+}
 
 button {
   padding: 12px 24px;
@@ -196,7 +226,7 @@ button:hover { transform: scale(1.05); }
   <div id="hearts-container"></div>
 
   <h1>Happiest Birthday Dear 🎂</h1>
-  <img src="index.jpeg" length="200px" width="500px">
+  <img src="index.jpeg">
 
   <h2>Are uhh ready for urr birthday surprise? 😏</h2>
 
