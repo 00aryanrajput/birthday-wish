@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Pacifico&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #000, #2b0a0a, #ff4d6d, #7fffd4);
+  color: white;
+  overflow-x: hidden;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.active { display: block; }
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 42px;
+}
+
+
+#page1 img {
+  width: 450px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+
+button {
+  padding: 12px 24px;
+  margin: 10px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ff4d6d, #ff758c, #7fffd4);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+button:hover { transform: scale(1.05); }
+
+#hearts-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  animation: float 6s linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(100vh); opacity:0; }
+  50% { opacity:1; }
+  100% { transform: translateY(-10vh); opacity:0; }
+}
+.page > * { position: relative; z-index: 1; }
+
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  width: 220px;
+  cursor: pointer;
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+  padding: 10px;
+}
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain; 
+  background: rgba(255,255,255,0.1);
+}
+.card p {
+  font-size: 20px;
+  padding: 10px;
+}
+.card:hover { transform: scale(1.05); }
+
+
+.letter-box {
+  background: #fff8e7;
+  color: #333;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 700px;
+  margin: auto;
+  font-family: 'Playfair Display', serif;
+  text-align: left;
+  line-height: 1.8;
+}
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+@media(max-width:600px){
+  .gallery { grid-template-columns: 1fr; }
+}
+
+.quiz-box {
+  max-width: 650px;
+  margin: auto;
+  background: #ffffff;
+  color: #333;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+
+#question {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+.option-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  background: #7e2626;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.option-btn:hover {
+  background: #ffe4e9;
+}
+
+.option-btn.correct {
+  background: #c8f7c5;
+  border-color: green;
+}
+
+.option-btn.wrong {
+  background: #ffc0c0;
+  border-color: red;
+}
+
+
+#result {
+  font-weight: bold;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+
+<div id="page1" class="page active">
+  <div id="hearts-container"></div>
+
+  <h1>Happiest Birthday Dear 🎂</h1>
+  <img src="index.jpeg" length="200px" width="500px">
+
+  <h2>Are uhh ready for urr birthday surprise? 😏</h2>
+
+  <button onclick="goToPage('page2')">YES ❤️</button>
+  <button onclick="noClick()">NO 😒</button>
+</div>
+
+
+<div id="page2" class="page">
+  <h1>Choose Your Surprise 🎁</h1>
+
+  <div class="options">
+
+    <div class="card" onclick="goToPage('letter')">
+      <img src="letterb.png">
+      <p>💌 Letter</p>
+    </div>
+
+    <div class="card" onclick="goToPage('gallery')">
+      <img src="gallb.png">
+      <p>📸 Gallery</p>
+    </div>
+
+    <div class="card" onclick="goToPage('quiz')">
+      <img src="qqqqbbbb.png">
+      <p>🎮 Quiz</p>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="letter" class="page">
+  <h1>💌 A Special Letter</h1>
+
+  <div class="letter-box">
+   <div class="letter-box">
+  Happiest birthday to my number one ❤️, my human diary 📖, my bestest friend 🫶  
+  there's just so much to say and express that i don't know how to pen it down here 🥺  
+  <br><br>
+  Thank you for being this person that you are 💖, i feel grateful to have crossed paths with you ✨  
+  and grateful to have known you 🤍  
+  <br><br>
+  you know me the best 🫂, you know my deepest secrets 🤫 and you make sure to keep them safe with you 🔐  
+  you know when i need somebody to cheer me up 💫 & you do 🥹  
+  you know how to make me smile on my darkest days 🌙✨  
+  <br><br>
+  What do i even call a person like that? 🥺❤️  
+  <br><br>
+  You make my life happier, just by being in it 💕  
+  <br><br>
+  Thank you for accepting me with all my flaws 🫶, and for making me feel good about myself  
+  when i feel like shit 😔➡️😊  
+  <br><br>
+  I dont know how to do life without you 🥺❤️  
+  <br><br>
+  Here's to all these years 🥂, all the smiles 😄, all the tears 😢  
+  what a roller coaster ride it has been 🎢✨  
+  <br><br>
+  The only thing that remained the same at the end was this bond that we share 💞  
+  <br><br>
+  We had our share of ups & downs 📈📉, well a lot of them 😅  
+  but we never gave up on each other 🤝❤️  
+  <br><br>
+  and i know how much i value this friendship 💯, how much i appreciate you  
+  for everything that you have done for me 🙏💖  
+  <br><br>
+  And not to forget, how proud you make me 🥹❤️  
+</div>
+  </div>
+
+  <button onclick="goToPage('page2')">Back</button>
+</div>
+
+
+<div id="gallery" class="page">
+  <h1>📸 Memories</h1>
+
+  <div class="gallery">
+    <img src="gal1.jpeg">
+    <img src="gal2.jpeg">
+    <img src="gal3.jpeg">
+    <img src="gal4.jpeg">
+    <img src="gal 7.jpeg">
+    <img src="index.jpeg">
+  </div>
+
+  <button onclick="goToPage('page2')">Back</button>
+</div>
+
+
+<div id="quiz" class="page">
+  <h1>🎮 Birthday Quiz</h1>
+
+  <div class="quiz-box">
+    <p id="question"></p>
+    <div id="answers"></div>
+    <p id="result"></p>
+    <button id="nextBtn" onclick="nextQ()" style="display:none;">Next ➡️</button>
+  </div>
+
+  <button onclick="goToPage('page2')">Back</button>
+</div>
+
+<script>
+function goToPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  if(id === "page1"){
+    createHearts();
+  }
+}
+
+function noClick(){
+  alert("Aapko YES hi click karna hoga 😏");
+}
+
+
+function createHearts(){
+  let container = document.getElementById("hearts-container");
+  container.innerHTML="";
+  for(let i=0;i<25;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(15+Math.random()*20)+"px";
+    h.style.animationDuration=(3+Math.random()*5)+"s";
+    container.appendChild(h);
+  }
+}
+createHearts();
+
+
+let quiz=[
+{q:"Aaj kiska birthday hai? 🎂",a:["Mera 😎","Tumhara ❤️","Google 😂"],c:0},
+{q:"Sabse special kaun hai aaj? 😏",a:["Main 😎","Tum ❤️","Dono 😍"],c:0},
+{q:"Sabse zyada pyaar kaun deserve karta hai? 💖",a:["Main 😎","Tum ❤️","Koi nahi 😂"],c:0},
+{q:"Gift kisko milna chahiye? 🎁",a:["Mujhe 😎","Tumhe ❤️","Kisi ko nahi 😂"],c:0},
+{q:"Aaj ki queen kaun hai? 👑",a:["Main 😎","Tum ❤️","Sab 😂"],c:0}
+];
+
+let current=0;
+
+function loadQ(){
+ let q=quiz[current];
+ document.getElementById("question").innerText=q.q;
+
+ let html="";
+ q.a.forEach((ans,i)=>{
+   html+=`<button class="option-btn" onclick="check(this, ${i})">${ans}</button>`;
+ });
+
+ document.getElementById("answers").innerHTML=html;
+ document.getElementById("result").innerText="";
+ document.getElementById("nextBtn").style.display="none";
+}
+
+function check(btn,i){
+ let q=quiz[current];
+ let buttons=document.querySelectorAll(".option-btn");
+
+ buttons.forEach(b=>b.disabled=true);
+
+ if(i===q.c){
+   btn.classList.add("correct");
+   document.getElementById("result").innerText="Correct 😍";
+ }else{
+   btn.classList.add("wrong");
+   buttons[q.c].classList.add("correct");
+   document.getElementById("result").innerText="Wrong 😒";
+ }
+
+ document.getElementById("nextBtn").style.display="inline-block";
+}
+
+function nextQ(){
+ current++;
+ if(current<quiz.length){
+   loadQ();
+ }else{
+   document.getElementById("question").innerText="🎉 Quiz Finished 🎉";
+   document.getElementById("answers").innerHTML="";
+   document.getElementById("result").innerText="Aaj sab kuch tumhare naam ❤️";
+   document.getElementById("nextBtn").style.display="none";
+ }
+}
+
+loadQ();
+</script>
+
+</body>
+</html>
